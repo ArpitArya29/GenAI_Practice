@@ -20,7 +20,7 @@ const client = new OpenAI({
 // now, by adding the baseURL of googleAPI/../openai, we can use the API key of gemini for OpenAI
 client.chat.completions
     .create({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-2.5-flash-lite',
         messages:[
             { role: 'user', content: 'Hello, How are you?' }
         ]

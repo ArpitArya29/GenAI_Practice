@@ -20,7 +20,7 @@ async function main() {
         messages: [
             { 
                 role: 'user', 
-                content: "What is 5 * 4 + 10 * 5" 
+                content: "What is 5 * 4" 
             }
         ]
     })
