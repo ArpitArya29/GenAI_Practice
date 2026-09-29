@@ -21,5 +21,5 @@ In AI models, there are several terms/types of giving instructions (prompting st
     - It is something that regulates the AI model to approach the problem statement/instruction given by the user
     - The complete context if feeded up to the model using these system prompts handling the behaviour of the model
 ```
-[code: COT](../Prompting/03_cot.js)
+[code: COT](../Prompting/03_cot.js)  
 [code: Using openrouter SDK openAI compatibility](../Prompting/COT_openrouter.js)
