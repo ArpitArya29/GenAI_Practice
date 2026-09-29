@@ -14,4 +14,12 @@ Basically we can control our model slightly
 >**3. Chain of Thought Prompting**:  
  Here the instructions/problems is breaked up into several steps, and it is getting solved before giving the final output  
 In this process, we give out model a **System Prompt** including several breakdown rules, and steps what to perform on the given instructions  
+```
+In AI models, there are several terms/types of giving instructions (prompting styles) having different roles
+- USER: Which the user asks to the model
+- SYSTEM: It sets the initial context to the model before performing the operation into the information
+    - It is something that regulates the AI model to approach the problem statement/instruction given by the user
+    - The complete context if feeded up to the model using these system prompts handling the behaviour of the model
+```
 [code: COT](../Prompting/03_cot.js)
+[code: Using openrouter SDK openAI compatibility](../Prompting/COT_openrouter.js)

@@ -5,13 +5,15 @@ dotenv.config({
     path: "../.env"
 });
 
-const ApiKey = process.env.GEMINIAPI_KEY;
-// console.log(ApiKey);
+const ApiKey = process.env.OPENROUTER_KEY;
 
+// const OPENROUTER_MODEL = "openai/text-embedding-3-small";
+const OPENROUTER_MODEL = "qwen/qwen3.8-27b:free";
+const OPENROUTER_URL = "https://openrouter.ai/api/v1";
 
 const client = new OpenAI({
     apiKey: ApiKey,
-    baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/"
+    baseURL: OPENROUTER_URL
 })
 
 const SYSTEM_PROMPT = `
@@ -63,7 +65,7 @@ async function main(prompt = '') {
     // Executes until it get the final output
     while(true) {
         const result = await client.chat.completions.create({
-            model: "gemini-2.5-flash",
+            model: OPENROUTER_MODEL,
             messages: MESSAGES_DB
         })
 
@@ -75,25 +77,15 @@ async function main(prompt = '') {
         MESSAGES_DB.push({ role:'assistant', content: rawResult })
 
         console.log(`🤖(${parsedRes.step}) : ${parsedRes.text}`);
-
-        // if(parsedRes.step.toLowerCase() === "think") {
-        //     // TODO: We can call another API to validate the current result
-
-        //     // We can validate the output of the chatGPT from Claude
-        // }
         
+        // if the step is output, then we can break the loop
         if(parsedRes.step.toLowerCase() === "output") {
             console.log(parsedRes.text);
             break;
         }
-
-        MESSAGES_DB.push({
-            role: "user",
-            content: "Continue with the next step only."
-        });
     }
 
 }
 
-// main("What is Generative AI, give the brief response in about 20 - 30 words?");
-main("What is 2 * 2 + 6 / 3?");
+main("What is Generative AI, give the brief response in about 20 - 30 words?");
+// main("What is 2 * 2 + 6 / 3?");
